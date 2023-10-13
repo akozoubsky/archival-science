@@ -1,0 +1,175 @@
+/**
+ * Site Structure
+ *
+ * - Set vertical margins and responsive widths on
+ *   top-level wrappers and content wrappers
+ * - `--global--width-content` is a responsive variable
+ * - See: globals/_global-width-responsive.scss
+ */
+ 
+/**
+ * Top Level Wrappers (header, main, footer)
+ * - Set vertical padding and horizontal margins
+ */
+.site-header,
+.site-main,
+.widget-area,
+.site-footer {
+	padding-top: var(--global--spacing-vertical);
+	padding-bottom: var(--global--spacing-vertical);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.site-header {
+	/* alexk padding-bottom: calc(3 * var(--global--spacing-vertical)); */
+	padding-bottom: calc(0.75 * var(--global--spacing-vertical));
+	/* inclui, para dar mais espaco */
+	margin-bottom: calc(0.75 * var(--global--spacing-vertical));
+}
+
+/**
+ * Site-main children wrappers
+ * - Add double vertical margins here for clearer hierarchy
+ */
+.site-main > * {
+	margin-top: calc(2 * var(--global--spacing-vertical));
+	margin-bottom: calc(2 * var(--global--spacing-vertical));
+}
+
+.site-main > *:first-child {
+	margin-top: 0;
+}
+
+.site-main > *:last-child {
+	margin-bottom: 0;
+}
+
+/*
+ * Block & non-gutenberg content wrappers
+ * - Set margins
+ */
+.entry-header,
+.page-header,
+.post-thumbnail,
+.entry-content,
+.page-content,
+.entry-footer,
+.author-bio,
+.widget /* alexk - inclui .widget */ {
+	margin-top: var(--global--spacing-vertical);
+	margin-bottom: var(--global--spacing-vertical);
+}
+
+/*
+ * Block & non-gutenberg content wrapper children
+ * - Sets spacing-vertical margin logic
+ */
+ /* div > p	Selects all <p> elements where the parent is a <div> element */
+.site-main > article > *,
+.site-main > .not-found > *,
+.entry-content > *,
+.page-content > *,
+[class*=inner-container] > * {
+	margin-top: var(--global--spacing-vertical);
+	margin-bottom: var(--global--spacing-vertical);
+}
+
+.site-main > article > *:first-child,
+.site-main > .not-found > *:first-child,
+.entry-content > *:first-child,
+.page-content > *:first-child,
+[class*=inner-container] > *:first-child {
+	margin-top: 0;
+}
+
+.site-main > article > *:last-child,
+.site-main > .not-found > *:last-child,
+.entry-content > *:last-child,
+.page-content > *:last-child,
+[class*=inner-container] > *:last-child {
+	margin-bottom: 0;
+}
+
+.site-footer > *,
+/* .sidebar-footer.widget-area > * */
+.sidebar-footer.widget-area > * {
+	margin-top: var(--global--spacing-vertical);
+	margin-bottom: var(--global--spacing-vertical);
+}
+@media only screen and (min-width: 576px) {
+
+	.site-footer > *,
+	.sidebar-footer.widget-area > * {
+		margin-top: calc( 1.5 * var(--global--spacing-vertical));
+		margin-bottom: calc( 1.5 * var(--global--spacing-vertical));
+	}
+}
+
+/*
+ * Block & non-gutenberg content wrapper children
+ * - Sets spacing-unit margins
+ */
+.entry-header > *,
+.page-header > *,
+.post-thumbnail > *,
+.page-content > *,
+.comment-content > *,
+.widget > * {
+	margin-top: var(--global--spacing-unit);
+	margin-bottom: var(--global--spacing-unit);
+}
+
+.entry-header > *:first-child,
+.page-header > *:first-child,
+.post-thumbnail > *:first-child,
+.page-content > *:first-child,
+.comment-content > *:first-child,
+.widget > *:first-child {
+	margin-top: 0;
+}
+
+.entry-header > *:last-child,
+.page-header > *:last-child,
+.post-thumbnail > *:last-child,
+.page-content > *:last-child,
+.comment-content > *:last-child,
+.widget > *:last-child {
+	margin-bottom: 0;
+}
+
+/*
+ * .entry-content children specific controls
+ * - Adds special margin overrides for alignment utility classes
+ */
+.entry-content > * {
+
+	/* Reset alignleft and alignright margins after alignfull */
+}
+
+.entry-content > *.alignleft,
+.page-content > *.alignleft,
+.entry-content > *.alignright,
+.page-content > *.alignright,
+.entry-content > *.alignleft:first-child + *,
+.page-content > *.alignleft:first-child + *,
+.entry-content > *.alignright:first-child + *,
+.page-content > *.alignright:first-child + *,
+.entry-content > *.alignfull.has-background,
+.page-content > *.alignfull.has-background {
+	margin-top: 0;
+}
+
+.entry-content > *:last-child,
+.page-content > *:last-child,
+.entry-content > *.alignfull.has-background,
+.page-content > *.alignfull.has-background {
+	margin-bottom: 0;
+}
+
+.entry-content > *.alignfull + .alignleft,
+.page-content > *.alignfull + .alignleft,
+.entry-content > *.alignfull + .alignright,
+.page-content > *.alignfull + .alignright {
+	margin-top: var(--global--spacing-vertical);
+}
